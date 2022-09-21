@@ -73,16 +73,14 @@ public class Silly implements Comparable<Silly>{
     }
 
     /**
-     * TODO (Task 1): Create another constructor that takes in TWO parameters,
-     *       both of which are strings.
-     *       Afterwards, set this.name to the concatenation of both
-     *       strings (e.g. this.name = [first string] + [second string]).
-     *       Make sure you document this method!
+     * Creates a Silly object.
+     * Takes in two Strings as arguments.
+     * @param one the first String.
+     * @param two the second String.
      */
-
-
-
-
+    public Silly(String one, String two) {
+        this.name = one + two;
+    }
 
     public static void main(String[] args) {
         /**
@@ -116,7 +114,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {1, 2, 3, 4};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -132,8 +130,8 @@ public class Silly implements Comparable<Silly>{
      * @return the name of this Silly.
      */
     @Override
-    public String toString(){
-        // TODO (Task 3): Implement the body of this method!
+    public String toString() {
+        return this.name;
     }
 
     /**
@@ -158,6 +156,10 @@ public class Silly implements Comparable<Silly>{
         }
 
         Silly other = (Silly) o; // To access .name of o, we need to cast it.
+        if (this.name.equals(other.name)){
+            return true;
+        }
+        return false;
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
@@ -194,6 +196,17 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        int this_length = this.name.length();
+        int other_length = other.name.length();
+        if (this_length > other_length){
+            return 1;
+        }
+        if (other_length > this_length) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
     }
 
     /*
